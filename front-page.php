@@ -6,7 +6,7 @@
         <?php dynamic_sidebar('front-sidebar');?>
 
         <?php endif;?>
-            <div></div>
+        
    
         <?php the_title();?>
 
