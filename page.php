@@ -1,34 +1,38 @@
-<?php get_header();?>
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package WordPress
+ * @subpackage Twenty_Nineteen
+ * @since Twenty Nineteen 1.0
+ */
 
-    
-    <!-- Sidebar -->
-    <?php if( is_active_sidebar('page-sidebar')): ?>
+get_header();
+?>
 
-    <?php dynamic_sidebar('page-sidebar');?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-    <?php endif;?>
-        
+			<?php
 
-    <!-- Hier Code für die Seiten Allgemein -->
-    <?php the_title();?>
+			// Start the Loop.
+			while ( have_posts() ) :
+				the_post();
 
+				get_template_part( 'template-parts/content/content', 'page' );
 
-    <!--Hier Geändert für Bild für Thumpnail-->
-    <?php if(has_post_thumbnail()):?>
+				// If comments are open or we have at least one comment, load up the comment template.
+				if ( comments_open() || get_comments_number() ) {
+					comments_template();
+				}
 
-                
+			endwhile; // End the loop.
+			?>
 
-    <?php endif; ?>
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
-
-
-
-    <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
-
-    <?php the_content(); ?>
-
-    <?php endwhile; endif; ?>
-    
-
-
-<?php get_footer();?>
+<?php
+get_footer();

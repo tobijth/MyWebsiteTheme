@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying search results pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
@@ -18,9 +18,10 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-				?>
+				<h1 class="page-title">
+					<?php _e( 'Search results for: ', 'twentynineteen' ); ?>
+					<span class="page-description"><?php echo get_search_query(); ?></span>
+				</h1>
 			</header><!-- .page-header -->
 
 			<?php
